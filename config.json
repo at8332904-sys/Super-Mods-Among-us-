@@ -1,0 +1,13 @@
+{
+  "Funcoes": {
+    "Tripulante": ["xerife", "médico", "agente", "prefeito"],
+    "Impostor": ["ninja", "duelista", "bruxo", "marionetista", "ilusionista", "congelador"],
+    "Neutro": ["jester", "glutão", "vácuo", "abelhinha", "deadpool", "vespa"]
+  },
+  "GameModes": ["infectado", "speedrun", "hot_potato", "policia_e_ladrao", "venteleporter", "rouba_bandeira"],
+  "Chat": {
+    "ChatLivre": true,
+    "VozPorAproximidade": true,
+    "DistanciaMaxima": 5.0
+  }
+}
