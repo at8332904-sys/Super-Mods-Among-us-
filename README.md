@@ -1,2 +1,2 @@
 # Super-Mods-Among-us-
-um servidor para among us com novas funções e modos
+procura mods para among us, estamos aqui para isso 
