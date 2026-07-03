@@ -1,4 +1,4 @@
-Modding us
+Super-mods-among us
 Repositório oficial — criado e sempre atualizado por mim!
  
  
