@@ -7,11 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Preparar arquivos do mod
+      - name: Preparar arquivos do mod e gerar APK
         run: |
-          echo "Juntando tudo..."
+          echo "Juntando tudo e montando o APK..."
+          # Aqui você coloca o comando que empacota seu mod no formato APK
+          # Se usa base do BepInEx/Among Us Android, adiciona o comando de build aqui
+          # Por enquanto vamos criar um pacote com todos os seus arquivos:
+          zip -r Grande-Anfitriao.apk plugins/ config.json README.md
 
-      # ✅ Agora salva o APK SEMPRE, mesmo sem lançamento
       - name: Guardar APK pronto
         uses: actions/upload-artifact@v4
         with:
@@ -23,5 +26,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: Grande-Anfitriao.apk
+          
           
           
