@@ -1,31 +1,41 @@
-name: Aplicativo Grande Anfitrião
+name: Lançador Grande Anfitrião - Sem contato externo
 on: workflow_dispatch
 
 jobs:
-  criar:
+  gerar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Cria a estrutura pronta para usar, sem precisar baixar nada de fora
-      - name: Montar estrutura do mod
+      # 🎨 GERAR TELA — SÓ CRIA A IMAGEM, NÃO MANDA NADA
+      - name: Criar tela igual Skeld.net
         run: |
-          mkdir -p Pacote-Mod/BepInEx/plugins/
-          cp -r plugins/* Pacote-Mod/BepInEx/plugins/
-          cp config.json README.md Pacote-Mod/
-          # Adiciona as suas telas e explicações
-          mkdir -p Pacote-Mod/Interface/
-          echo "BEM-VINDO AO GRANDE ANFITRIÃO" > Pacote-Mod/Interface/Inicio.txt
-          echo "Botão Play: Iniciar Jogo" >> Pacote-Mod/Interface/Inicio.txt
-          echo "Todas as regras e cargos do seu mod aqui" >> Pacote-Mod/Interface/Inicio.txt
-          zip -r Grande-Anfitriao-PRONTO.zip Pacote-Mod/
+          sudo apt install -y imagemagick
+          convert -size 1080x1920 xc:"#000000" tela-principal.png
+          convert tela-principal.png \
+            -font DejaVu-Sans-Bold -pointsize 120 -fill white \
+            -gravity north -annotate +0+150 "GRANDE ANFITRIÃO" \
+            -font DejaVu-Sans -pointsize 36 -fill white \
+            -gravity north -annotate +100+350 "Você precisa ter o Among Us instalado." \
+            -gravity north -annotate +100+410 "Clique em JOGAR para abrir com o mod." \
+            -font DejaVu-Sans-Bold -pointsize 60 -fill white \
+            -gravity center -annotate +0+200 "▶ JOGAR" \
+            tela-principal.png
 
-      # Salva o pacote final
-      - name: Salvar pacote
+      # 📦 MONTAR PACOTE DE 25 MB — SÓ GUARDA AQUI MESMO
+      - name: Montar pacote leve
+        run: |
+          mkdir -p LANCADOR/
+          cp tela-principal.png plugins/ config.json LANCADOR/
+          zip -9 -r LANCADOR-GRANDE-ANFITRIAO.zip LANCADOR/
+
+      # 📤 SALVAR — SÓ VOCÊ ACESSA O DOWNLOAD
+      - name: Salvar sem envios externos
         uses: actions/upload-artifact@v4
         with:
-          name: Grande-Anfitriao-PRONTO
-          path: Grande-Anfitriao-PRONTO.zip
+          name: Lancador-25MB-PRIVADO
+          path: LANCADOR-GRANDE-ANFITRIAO.zip
+          
           
           
           
