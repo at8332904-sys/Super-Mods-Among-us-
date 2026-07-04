@@ -1,4 +1,4 @@
-name: Lançador Grande Anfitrião - Sem contato externo
+name: Lançador Grande Anfitrião - Versão Final
 on: workflow_dispatch
 
 jobs:
@@ -7,34 +7,62 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 🎨 GERAR TELA — SÓ CRIA A IMAGEM, NÃO MANDA NADA
-      - name: Criar tela igual Skeld.net
+      # 1️⃣ INSTALA FERRAMENTA SEM ERRO
+      - name: Preparar para criar tela
         run: |
+          sudo apt update -y
           sudo apt install -y imagemagick
+
+      # 2️⃣ CRIA A TELA IGUAL SKELD.NET, COM COMANDOS CERTOS
+      - name: Gerar tela principal
+        run: |
+          # Fundo preto no tamanho de celular
           convert -size 1080x1920 xc:"#000000" tela-principal.png
+          
+          # Nome grande no topo
           convert tela-principal.png \
             -font DejaVu-Sans-Bold -pointsize 120 -fill white \
             -gravity north -annotate +0+150 "GRANDE ANFITRIÃO" \
+            tela-principal.png
+          
+          # Textos explicativos
+          convert tela-principal.png \
             -font DejaVu-Sans -pointsize 36 -fill white \
-            -gravity north -annotate +100+350 "Você precisa ter o Among Us instalado." \
-            -gravity north -annotate +100+410 "Clique em JOGAR para abrir com o mod." \
+            -gravity north -annotate +100+350 "Você precisa ter o Among Us instalado para usar esse mod." \
+            -gravity north -annotate +100+410 "Clique em JOGAR para abrir o jogo com o mod ativado." \
+            -gravity north -annotate +100+470 "Tudo do seu jeito, sem servidores de fora!" \
+            tela-principal.png
+          
+          # Botão grande no centro
+          convert tela-principal.png \
             -font DejaVu-Sans-Bold -pointsize 60 -fill white \
             -gravity center -annotate +0+200 "▶ JOGAR" \
             tela-principal.png
+          
+          # Seção INFO embaixo
+          convert tela-principal.png \
+            -font DejaVu-Sans-Bold -pointsize 70 -fill white \
+            -gravity south -annotate +0-250 "INFO" \
+            -font DejaVu-Sans -pointsize 32 -fill white \
+            -gravity south -annotate +100-150 "Mod exclusivo Grande Anfitrião." \
+            -gravity south -annotate +100-100 "Cargos novos, regras personalizadas e muito mais!" \
+            tela-principal.png
 
-      # 📦 MONTAR PACOTE DE 25 MB — SÓ GUARDA AQUI MESMO
-      - name: Montar pacote leve
+      # 3️⃣ MONTA O PACOTE DE 25 MB, SEM NENHUM LINK EXTERNO
+      - name: Empacotar tudo
         run: |
-          mkdir -p LANCADOR/
-          cp tela-principal.png plugins/ config.json LANCADOR/
-          zip -9 -r LANCADOR-GRANDE-ANFITRIAO.zip LANCADOR/
+          mkdir -p LANCADOR-GRANDE-ANFITRIAO/
+          cp tela-principal.png LANCADOR-GRANDE-ANFITRIAO/
+          cp -r plugins/ config.json README.md LANCADOR-GRANDE-ANFITRIAO/
+          zip -9 -r Lancador-25MB.zip LANCADOR-GRANDE-ANFITRIAO/
 
-      # 📤 SALVAR — SÓ VOCÊ ACESSA O DOWNLOAD
-      - name: Salvar sem envios externos
+      # 4️⃣ SALVA O ARQUIVO PRONTO
+      - name: Salvar lançador
         uses: actions/upload-artifact@v4
         with:
-          name: Lancador-25MB-PRIVADO
-          path: LANCADOR-GRANDE-ANFITRIAO.zip
+          name: Lancador-Grande-Anfitriao-PRONTO
+          path: Lancador-25MB.zip
+          
           
           
           
