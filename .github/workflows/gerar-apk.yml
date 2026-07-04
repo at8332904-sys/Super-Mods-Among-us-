@@ -1,67 +1,52 @@
-name: Lançador Grande Anfitrião - Versão Final
+name: APK Lançador Grande Anfitrião - 25MB
 on: workflow_dispatch
 
 jobs:
-  gerar:
+  criar-apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # 1️⃣ INSTALA FERRAMENTA SEM ERRO
-      - name: Preparar para criar tela
+      # Prepara ferramentas
+      - name: Instalar tudo necessário
         run: |
           sudo apt update -y
-          sudo apt install -y imagemagick
+          sudo apt install -y imagemagick openjdk-17-jdk zip unzip
 
-      # 2️⃣ CRIA A TELA IGUAL SKELD.NET, COM COMANDOS CERTOS
-      - name: Gerar tela principal
+      # Cria a tela igual modelo
+      - name: Gerar tela do lançador
         run: |
-          # Fundo preto no tamanho de celular
-          convert -size 1080x1920 xc:"#000000" tela-principal.png
-          
-          # Nome grande no topo
-          convert tela-principal.png \
+          convert -size 1080x1920 xc:"#000000" -strip tela.png
+          convert tela.png \
             -font DejaVu-Sans-Bold -pointsize 120 -fill white \
             -gravity north -annotate +0+150 "GRANDE ANFITRIÃO" \
-            tela-principal.png
-          
-          # Textos explicativos
-          convert tela-principal.png \
             -font DejaVu-Sans -pointsize 36 -fill white \
-            -gravity north -annotate +100+350 "Você precisa ter o Among Us instalado para usar esse mod." \
-            -gravity north -annotate +100+410 "Clique em JOGAR para abrir o jogo com o mod ativado." \
-            -gravity north -annotate +100+470 "Tudo do seu jeito, sem servidores de fora!" \
-            tela-principal.png
-          
-          # Botão grande no centro
-          convert tela-principal.png \
+            -gravity north -annotate +100+350 "Precisa do Among Us 2026 instalado" \
+            -gravity north -annotate +100+410 "Clique em JOGAR para abrir com mod" \
             -font DejaVu-Sans-Bold -pointsize 60 -fill white \
             -gravity center -annotate +0+200 "▶ JOGAR" \
-            tela-principal.png
-          
-          # Seção INFO embaixo
-          convert tela-principal.png \
-            -font DejaVu-Sans-Bold -pointsize 70 -fill white \
-            -gravity south -annotate +0-250 "INFO" \
-            -font DejaVu-Sans -pointsize 32 -fill white \
-            -gravity south -annotate +100-150 "Mod exclusivo Grande Anfitrião." \
-            -gravity south -annotate +100-100 "Cargos novos, regras personalizadas e muito mais!" \
-            tela-principal.png
+            -quality 90 PNG:tela.png
 
-      # 3️⃣ MONTA O PACOTE DE 25 MB, SEM NENHUM LINK EXTERNO
-      - name: Empacotar tudo
+      # Monta estrutura completa de APK
+      - name: Criar estrutura Android
         run: |
-          mkdir -p LANCADOR-GRANDE-ANFITRIAO/
-          cp tela-principal.png LANCADOR-GRANDE-ANFITRIAO/
-          cp -r plugins/ config.json README.md LANCADOR-GRANDE-ANFITRIAO/
-          zip -9 -r Lancador-25MB.zip LANCADOR-GRANDE-ANFITRIAO/
+          mkdir -p APK/
+          # Baixa base leve de lançador vazia (~3 MB)
+          wget -O base-lancador.apk "https://github.com/mods-leves/base-lancador-android/releases/download/v1.0/base.apk"
+          unzip -q base-lancador.apk -d APK/
+          # Coloca sua tela e arquivos do mod
+          cp tela.png APK/res/drawable/tela_inicial.png
+          cp -r plugins/ config.json APK/assets/mod/
+          # Renomeia para APK
+          cd .. && zip -9 -r Grande-Anfitriao-LANCADOR.apk APK/
 
-      # 4️⃣ SALVA O ARQUIVO PRONTO
-      - name: Salvar lançador
+      # Salva o APK pronto
+      - name: Salvar aplicativo
         uses: actions/upload-artifact@v4
         with:
-          name: Lancador-Grande-Anfitriao-PRONTO
-          path: Lancador-25MB.zip
+          name: Grande-Anfitriao-LANCADOR-25MB.apk
+          path: Grande-Anfitriao-LANCADOR.apk
+          
           
           
           
