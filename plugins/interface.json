@@ -1,0 +1,62 @@
+{
+  "configuracaoGeral": {
+    "funcionar": true,
+    "posicaoBotoes": "ao_lado_dos_originais",
+    "corPrincipal": "#222222",
+    "corDestaque": "#44AAFF",
+    "corTexto": "#FFFFFF",
+    "tamanhoBotao": 72,
+    "espacoEntre": 12,
+    "mostrarTecla": true
+  },
+
+  "botoesPorCargo": {
+    "Xerife": [
+      {"nome": "🔫 Atirar", "tecla": "F", "cor": "#FF4444"}
+    ],
+    "Médico": [
+      {"nome": "🛡️ Proteger", "tecla": "G", "cor": "#44DD44"},
+      {"nome": "💉 Curar", "tecla": "H", "cor": "#FF77BB"}
+    ],
+    "Engenheiro": [
+      {"nome": "🔧 Consertar Longe", "tecla": "E", "cor": "#FFAA00"}
+    ],
+    "Prefeito": [
+      {"nome": "📢 Voto Extra", "tecla": "P", "cor": "#AA77FF"}
+    ],
+    "Vidente": [
+      {"nome": "👁️ Ver Pistas", "tecla": "V", "cor": "#88DDFF"}
+    ],
+    "Isca": [
+      {"nome": "⚠️ Alerta", "tecla": "I", "cor": "#FFDD44"}
+    ],
+
+    "Deadpool": [
+      {"nome": "⚔️ Ataque Duplo", "tecla": "Z", "cor": "#FF6622"}
+    ],
+    "Mestre das Formas": [
+      {"nome": "👤 Transformar", "tecla": "T", "cor": "#9955FF"}
+    ],
+    "Vampiro": [
+      {"nome": "🦇 Morder", "tecla": "M", "cor": "#AA0000"}
+    ],
+    "Ladrão": [
+      {"nome": "🎭 Roubar Cargo", "tecla": "R", "cor": "#555555"}
+    ],
+
+    "Trapaceiro": [
+      {"nome": "🎪 Truque", "tecla": "U", "cor": "#FFCC00"}
+    ],
+    "Carrasco": [
+      {"nome": "⚖️ Alvo", "tecla": "L", "cor": "#777777"}
+    ],
+    "Lobo Solitário": [
+      {"nome": "🐺 Fuga", "tecla": "W", "cor": "#333333"}
+    ],
+
+    "Anfitrião": [
+      {"nome": "⚙️ Regras", "tecla": "N", "cor": "#BB55FF"}
+    ]
+  }
+}
+
