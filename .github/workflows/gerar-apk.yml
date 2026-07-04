@@ -11,9 +11,17 @@ jobs:
         run: |
           echo "Juntando tudo..."
 
+      # ✅ Agora salva o APK SEMPRE, mesmo sem lançamento
+      - name: Guardar APK pronto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Grande-Anfitriao-APK
+          path: Grande-Anfitriao.apk
+
       - name: Adicionar APK aos lançamentos
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: Grande-Anfitriao.apk
+          
           
