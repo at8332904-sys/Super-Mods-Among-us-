@@ -7,27 +7,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Baixa a base limpa do Among Us 2026
-      - name: Pegar base do jogo
+      # Cria a estrutura pronta para usar, sem precisar baixar nada de fora
+      - name: Montar estrutura do mod
         run: |
-          wget -O jogo-base.apk "https://github.com/mods-base/amongus-2026/versao-limpa.apk"
+          mkdir -p Pacote-Mod/BepInEx/plugins/
+          cp -r plugins/* Pacote-Mod/BepInEx/plugins/
+          cp config.json README.md Pacote-Mod/
+          # Adiciona as suas telas e explicações
+          mkdir -p Pacote-Mod/Interface/
+          echo "BEM-VINDO AO GRANDE ANFITRIÃO" > Pacote-Mod/Interface/Inicio.txt
+          echo "Botão Play: Iniciar Jogo" >> Pacote-Mod/Interface/Inicio.txt
+          echo "Todas as regras e cargos do seu mod aqui" >> Pacote-Mod/Interface/Inicio.txt
+          zip -r Grande-Anfitriao-PRONTO.zip Pacote-Mod/
 
-      # Coloca o seu mod e as telas de explicação
-      - name: Adicionar seu conteúdo
-        run: |
-          mkdir -p app/BepInEx/
-          cp -r plugins/ config.json app/BepInEx/
-          # Adiciona as telas com botão Play e explicações
-          mkdir -p app/Interface/
-          cp README.md app/Interface/Tela-Inicial.txt
-          zip -r Grande-Anfitriao.apk jogo-base.apk app/
-
-      # Gera o aplicativo final instalável
-      - name: Salvar aplicativo
+      # Salva o pacote final
+      - name: Salvar pacote
         uses: actions/upload-artifact@v4
         with:
-          name: Grande-Anfitriao.apk
-          path: Grande-Anfitriao.apk
+          name: Grande-Anfitriao-PRONTO
+          path: Grande-Anfitriao-PRONTO.zip
+          
           
           
           
