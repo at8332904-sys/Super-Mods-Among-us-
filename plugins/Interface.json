@@ -1,0 +1,24 @@
+{
+  "configuracaoGeral": {
+    "funcionar": true,
+    "posicaoBotoes": "ao_lado_dos_originais",
+    "corPrincipal": "#222222",
+    "corDestaque": "#44AAFF",
+    "corTexto": "#FFFFFF",
+    "tamanhoBotao": 72,
+    "espacoEntre": 12,
+    "mostrarTecla": true
+  },
+
+  "botoesPorCargo": {
+    "Xerife": [
+      {"nome": "🔫 Atirar", "tecla": "F", "cor": "#FF4444"}
+    ],
+    "Médico": [
+      {"nome": "🛡️ Proteger", "tecla": "G", "cor": "#44DD44"},
+      {"nome": "💉 Curar", "tecla": "H", "cor": "#FF77BB"}
+    ],
+    "Vespa": [
+      {"nome": "🐝 Voar", "tecla": "V", "cor": "#FFCC22"}
+    ],
+    "Deadpool":
