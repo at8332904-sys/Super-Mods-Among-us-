@@ -1,0 +1,38 @@
+name: APK Grande Anfitrião - Com Capa
+on: workflow_dispatch
+
+jobs:
+  criar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Preparar ferramentas
+        run: |
+          sudo apt update -y
+          sudo apt install -y imagemagick zip
+
+      - name: Usar sua capa
+        run: |
+          convert miniatura.png -resize 1080x1920^ -gravity center -extent 1080x1920 tela-principal.png
+          convert tela-principal.png \
+            -fill white -font DejaVu-Sans-Bold -pointsize 120 \
+            -stroke black -strokewidth 3 \
+            -gravity north -annotate +0+120 "GRANDE ANFITRIÃO" \
+            -fill white -font DejaVu-Sans -pointsize 40 \
+            -gravity north -annotate +100+280 "Seu mod exclusivo para Among Us" \
+            -fill "#FFD700" -font DejaVu-Sans-Bold -pointsize 70 \
+            -gravity south -annotate +0+150 "▶ INSTALAR MOD"
+
+      - name: Empacotar ~25MB
+        run: |
+          mkdir -p APLICATIVO/
+          cp tela-principal.png APLICATIVO/capa.png
+          cp -r plugins/ config.json README.md APLICATIVO/
+          zip -9 -r Grande-Anfitriao.apk APLICATIVO/
+
+      - name: Salvar final
+        uses: actions/upload-artifact@v4
+        with:
+          name: Grande-Anfitriao-25MB
+          path: Grande-Anfitriao.apk
