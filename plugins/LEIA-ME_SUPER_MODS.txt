@@ -1,5 +1,5 @@
 📂 PASTA PLUGINS — SUPER MODS
-Aqui ficam os arquivos principais:
+
 - Arquivos do mapa Brasil Alfa
 - Configurações gerais
 - Demais arquivos do Super Mods
