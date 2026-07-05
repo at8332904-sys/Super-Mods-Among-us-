@@ -1,0 +1,14 @@
+{
+  "imagem_tela": "splash.png",
+  "botao_play": {
+    "texto": "PLAY",
+    "comando": "iniciar_jogo"
+  },
+  "comandos": {
+    "iniciar_jogo": [
+      "carregar_unity",
+      "carregar_mod",
+      "abrir_among_us"
+    ]
+  }
+}
