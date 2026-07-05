@@ -8,7 +8,7 @@ jobs:
   build-apk:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Pegar todos os arquivos mais recentes
+      - name: 1. Pegar todos os arquivos
         uses: actions/checkout@v4
 
       - name: 2. Montar pacote completo
@@ -17,18 +17,23 @@ jobs:
           cp -r com.unity.addressables/ plugins/ codigos/ config_botao/ config.json miniatura.png pacote_final/
           rm -rf pacote_final/.git pacote_final/.github pacote_final/README.md
 
-      - name: 3. Gerar APK (~25 MB)
+      - name: 3. Gerar APK completo
         uses: sombra1304/action-apk-builder@v1
         with:
           caminho-projeto: pacote_final/
           nome-saida: Grande_Anfitriao.apk
+          nome-do-app: "Grande Anfitrião"
+          id-do-pacote: "com.augusto.grandeanfitriao"
+          icone-personalizado: miniatura.png
           versao-min-android: 26
+          versao-alvo-android: 34
           nivel-compressao: 9
-          tamanho-maximo-mb: 25
+          aplicativo-autonomo: true
 
       - name: 4. Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
-          nome-do-arquivo: APK_Atualizado_Grande_Anfitriao
+          nome-do-arquivo: APK_Grande_Anfitriao
           caminho: pacote_final/*.apk
+
 
