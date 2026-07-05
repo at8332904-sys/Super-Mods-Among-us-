@@ -1,0 +1,48 @@
+name: Gerar APK - Grande Anfitrião
+on:
+  push:
+    branches: [ principal ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Pegar todos os arquivos do repositório
+        uses: actions/checkout@v4
+
+      - name: 2. Preparar estrutura do mod
+        run: |
+          mkdir -p pacote_final/
+          cp -r plugins/ config.json miniatura.png pacote_final/
+          echo "Arquivos do mod organizados!"
+
+      - name: 3. Adicionar comandos originais do Among Us
+        run: |
+          cat >> pacote_final/config.json << 'EOF'
+          ,"comandosOriginais": {
+            "/ajuda": "Mostra lista de todos os comandos",
+            "/iniciar": "Começa a partida na sala",
+            "/encerrar": "Termina a partida atual",
+            "/expulsar": "Remove jogador da sala (apenas admin)",
+            "/silenciar": "Bloqueia chat de um jogador",
+            "/desilenciar": "Libera o chat do jogador",
+            "/regras": "Mostra as regras configuradas da sala",
+            "/versao": "Exibe versão do mod e do jogo"
+          }
+          EOF
+
+      - name: 4. Gerar APK compatível com Android
+        uses: sombra1304/action-apk-builder@v1
+        with:
+          caminho-projeto: pacote_final/
+          nome-saida: Grande_Anfitriao.apk
+          versao-min-android: 26
+          versao-alvo-android: 34
+          icone-personalizado: miniatura.png
+
+      - name: 5. Disponibilizar APK pronto para download
+        uses: actions/upload-artifact@v4
+        with:
+          nome-do-arquivo: APK_Do_Grande_Anfitriao
+          caminho: pacote_final/*.apk
