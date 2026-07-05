@@ -1,38 +1,34 @@
-name: APK Grande Anfitrião - Com Capa
-on: workflow_dispatch
+name: Gerar APK - Grande Anfitrião
+on:
+  push:
+    branches: [ principal ]
+  workflow_dispatch:
 
 jobs:
-  criar:
+  build-apk:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: 1. Pegar todos os arquivos mais recentes
+        uses: actions/checkout@v4
 
-      - name: Preparar ferramentas
+      - name: 2. Montar pacote completo
         run: |
-          sudo apt update -y
-          sudo apt install -y imagemagick zip
+          mkdir -p pacote_final/
+          cp -r com.unity.addressables/ plugins/ codigos/ config_botao/ config.json miniatura.png pacote_final/
+          rm -rf pacote_final/.git pacote_final/.github pacote_final/README.md
 
-      - name: Usar sua capa
-        run: |
-          convert miniatura.png -resize 1080x1920^ -gravity center -extent 1080x1920 tela-principal.png
-          convert tela-principal.png \
-            -fill white -font DejaVu-Sans-Bold -pointsize 120 \
-            -stroke black -strokewidth 3 \
-            -gravity north -annotate +0+120 "GRANDE ANFITRIÃO" \
-            -fill white -font DejaVu-Sans -pointsize 40 \
-            -gravity north -annotate +100+280 "Seu mod exclusivo para Among Us" \
-            -fill "#FFD700" -font DejaVu-Sans-Bold -pointsize 70 \
-            -gravity south -annotate +0+150 "▶ INSTALAR MOD"
+      - name: 3. Gerar APK (~25 MB)
+        uses: sombra1304/action-apk-builder@v1
+        with:
+          caminho-projeto: pacote_final/
+          nome-saida: Grande_Anfitriao.apk
+          versao-min-android: 26
+          nivel-compressao: 9
+          tamanho-maximo-mb: 25
 
-      - name: Empacotar ~25MB
-        run: |
-          mkdir -p APLICATIVO/
-          cp tela-principal.png APLICATIVO/capa.png
-          cp -r plugins/ config.json README.md APLICATIVO/
-          zip -9 -r Grande-Anfitriao.apk APLICATIVO/
-
-      - name: Salvar final
+      - name: 4. Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
-          name: Grande-Anfitriao-25MB
-          path: Grande-Anfitriao.apk
+          nome-do-arquivo: APK_Atualizado_Grande_Anfitriao
+          caminho: pacote_final/*.apk
+
