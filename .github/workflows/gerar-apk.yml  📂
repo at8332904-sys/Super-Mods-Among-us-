@@ -11,29 +11,29 @@ jobs:
       - name: 1. Pegar todos os arquivos
         uses: actions/checkout@v4
 
-      - name: 2. Montar pacote completo
+      - name: 2. Preparar pasta do app
         run: |
           mkdir -p pacote_final/
           cp -r com.unity.addressables/ plugins/ codigos/ config_botao/ config.json miniatura.png pacote_final/
           rm -rf pacote_final/.git pacote_final/.github pacote_final/README.md
 
-      - name: 3. Gerar APK completo
-        uses: sombra1304/action-apk-builder@v1
+      - name: 3. Gerar APK com ferramenta válida
+        uses: esafirm/android-build-action@v3
         with:
-          caminho-projeto: pacote_final/
-          nome-saida: Grande_Anfitriao.apk
-          nome-do-app: "Grande Anfitrião"
-          id-do-pacote: "com.augusto.grandeanfitriao"
-          icone-personalizado: miniatura.png
-          versao-min-android: 26
-          versao-alvo-android: 34
-          nivel-compressao: 9
-          aplicativo-autonomo: true
+          project-path: pacote_final/
+          output-name: Grande_Anfitriao.apk
+          app-name: "Grande Anfitrião"
+          package-name: "com.augusto.grandeanfitriao"
+          min-sdk: 26
+          target-sdk: 34
+          icon-path: miniatura.png
+          standalone-app: true
 
-      - name: 4. Disponibilizar APK
+      - name: 4. Salvar APK pronto
         uses: actions/upload-artifact@v4
         with:
-          nome-do-arquivo: APK_Grande_Anfitriao
-          caminho: pacote_final/*.apk
+          name: APK_Final_Grande_Anfitriao
+          path: "*.apk"
+
 
 
