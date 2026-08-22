@@ -7,7 +7,7 @@ Repositório oficial — criado e sempre atualizado por mim!
  
 Pacote de modificações e servidor próprio para Among Us, igual ao Skeld.net ou Modded MNA:
  
-- ✅ Funciona em PC e Android
+- ✅ Funciona em PC e Android e iPhone 
 
 - ✅ Regiões incluídas: América do Norte, Europa, Ásia + nossa região exclusiva Estúdio Guto • Super Mods
  
