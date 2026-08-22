@@ -9,7 +9,7 @@ Pacote de modificações e servidor próprio para Among Us, igual ao Skeld.net o
  
 - ✅ Funciona em PC e Android e iPhone 
 
-- ✅ Regiões incluídas: América do Norte, Europa, Ásia + nossa região exclusiva Estúdio Guto • Super Mods
+- ✅ Regiões incluídas: América do Norte, Europa, Ásia + nossa região exclusiva • Super Mods
  
  
  
