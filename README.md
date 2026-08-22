@@ -31,26 +31,47 @@ Pacote de modificações e servidor próprio para Among Us, igual ao Skeld.net o
  
 1. Baixe o arquivo ZIP na aba Releases
 
-2. Extraia tudo numa pasta separada
+2. deixe na área de trabalho 
 
-3. Abra o jogo — nossa região já aparece na lista, pronto para criar ou entrar
+3.depois vá em Android/data/com.innersholt.spacemafia/
+
+4.dexe souto na raiz do Among Us 
+
+5. Abra o jogo — nossa região já aparece na lista, pronto para criar ou entrar
  
-📱 Android
+📱 Android (instalação fácil😎)
  
-1. Baixe o pacote ou APK mais novo
+1. Baixe na play store ou no APK do Github ou curse forge
 
 2. Permita instalar aplicativos de fontes desconhecidas nas configurações
 
 3. Instale e abra — região já adicionada automaticamente
  
- 
+ instalação manual (mais difícil 😥)
+
+1.baixe o regioninfo.json do nosso site oficial 
+
+2.vai em Android/data/com.innershot.spacemafia
+
+3.antes de colocar o arquivo na raiz,apaga o original 
+
+4.se apagou, agora é só deixar o arquivo na raiz
+
+IPHONE 🍎
+
+1. vai em no nosso site, desce até encontrar IPHONE explica lá 
+
+2. nesta aba terá o botão colocar IPHONE 
+
+3.vai abrir o among us automaticamente e a região estará lá 
  
 ⚠️ Avisos importantes
  
 - Todos os amigos precisam ter a mesma versão instalada para conectar certo
 
-- Use apenas em salas privadas — risco de banimento nos servidores oficiais
 
 - Baixe sempre daqui do repositório oficial para evitar problemas
 
-- Projeto sempre atualizado — confira as versões novas aqui mesmo
+- Projeto sempre atualizado — confira as versões novas aqui no repositório ou no curse forge
+
+217modG
