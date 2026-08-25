@@ -32,14 +32,14 @@ este projeto é um mod onde tras a nostalgia do among us com funções e mapas d
 
 2. Vai gerar um aplicativo no seu Pc
 
-📱 Android (instalação fácil😎)
+📱 Android 
  
 1. Baixe o APK do Github ou curse forge
 
 2. Permita instalar aplicativos de fontes desconhecidas nas configurações
 
 3. Vai gerar um aplicativo 
- instalação manual (mais difícil 😥)
+ instalação manual
 
 
  
