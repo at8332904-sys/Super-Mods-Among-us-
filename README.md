@@ -1,13 +1,12 @@
 Super Mods Among us 
-Repositório oficial — criado e sempre atualizado por mim!
- 
- 
+Repositório oficial
+
  
 ✅ O que é esse projeto?
  
-Pacote de modificações e servidor próprio para Among Us, igual ao Skeld.net ou Modded MNA:
+este projeto é um mod onde tras a nostalgia do among us com funções e mapas da época:
  
-- ✅ Funciona em PC e Android e iPhone 
+- ✅ Funciona em PC e Android  
 
 - ✅ Regiões incluídas: América do Norte, Europa, Ásia + nossa região exclusiva • Super Mods
  
@@ -57,18 +56,13 @@ Pacote de modificações e servidor próprio para Among Us, igual ao Skeld.net o
 
 4.se apagou, agora é só deixar o arquivo na raiz
 
-IPHONE 🍎
 
-1. vai em no nosso site, desce até encontrar IPHONE explica lá 
-
-2. nesta aba terá o botão colocar IPHONE 
-
-3.vai abrir o among us automaticamente e a região estará lá 
  
 ⚠️ Avisos importantes
  
 - Todos os amigos precisam ter a mesma versão instalada para conectar certo
 
+- não funciona para o iPhone 
 
 - Baixe sempre daqui do repositório oficial para evitar problemas
 
